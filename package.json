@@ -1,6 +1,6 @@
 {
   "name": "action-terragrunt",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "GitHub action for setting up Terragrunt",
   "author": "Petri Autero",
   "license": "MIT",
