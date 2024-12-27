@@ -18,6 +18,14 @@ async function checkHead(url: string): Promise<number> {
 }
 
 describe('getDownloadURL()', () => {
+
+  const repoOrigin = `https://github.com/${process.env.GITHUB_REPOSITORY}`;
+
+  if (repoOrigin !== repoOrigin) {
+    console.warn(`Skipping tests: Repository origin is not ${repoOrigin}`);
+    return;
+  }
+
   it('get windows url', async () => {
     mock.method(os, 'type', () => {
       return 'Windows_NT';
