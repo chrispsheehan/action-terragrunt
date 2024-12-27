@@ -18,7 +18,6 @@ async function checkHead(url: string): Promise<number> {
 }
 
 describe('getDownloadURL()', () => {
-
   const repoOrigin = `https://github.com/${process.env.GITHUB_REPOSITORY}`;
 
   if (repoOrigin !== repoOrigin) {
