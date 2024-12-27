@@ -20,6 +20,8 @@ async function checkHead(url: string): Promise<number> {
 describe('getDownloadURL()', () => {
   const repoOrigin = `https://github.com/${process.env.GITHUB_REPOSITORY}`;
 
+  console.info(`Repository origin is not ${repoOrigin}`);
+
   if (repoOrigin !== repoOrigin) {
     console.warn(`Skipping tests: Repository origin is not ${repoOrigin}`);
     return;
