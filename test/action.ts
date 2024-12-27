@@ -1,6 +1,10 @@
 import * as assert from 'assert';
 import os from 'node:os';
-import {getDownloadURL, getLatestVersion} from '../src/action';
+import {
+  getDownloadURL,
+  getLatestVersion,
+  parentRepoOrigin
+} from '../src/action';
 import got from 'got';
 import {afterEach, describe, it, mock} from 'node:test';
 
@@ -18,6 +22,13 @@ async function checkHead(url: string): Promise<number> {
 }
 
 describe('getDownloadURL()', () => {
+  const repoOrigin = `https://github.com/${process.env.GITHUB_REPOSITORY}`;
+
+  if (repoOrigin !== parentRepoOrigin) {
+    console.warn(`Skipping tests: Repository origin is not ${repoOrigin}`);
+    return;
+  }
+
   it('get windows url', async () => {
     mock.method(os, 'type', () => {
       return 'Windows_NT';
@@ -28,7 +39,7 @@ describe('getDownloadURL()', () => {
     const winDLUrl = getDownloadURL('v0.21.13');
     assert.strictEqual(
       winDLUrl,
-      'https://github.com/gruntwork-io/terragrunt/releases/download/v0.21.13/terragrunt_windows_amd64.exe'
+      `https://github.com/${process.env.GITHUB_REPOSITORY}/releases/download/v0.21.13/terragrunt_windows_amd64.exe`
     );
     assert.strictEqual(await checkHead(winDLUrl), 302);
   });
@@ -43,7 +54,7 @@ describe('getDownloadURL()', () => {
     const darwinDLUrl = getDownloadURL('v0.21.13');
     assert.strictEqual(
       darwinDLUrl,
-      'https://github.com/gruntwork-io/terragrunt/releases/download/v0.21.13/terragrunt_darwin_amd64'
+      `https://github.com/${process.env.GITHUB_REPOSITORY}/releases/download/v0.21.13/terragrunt_darwin_amd64`
     );
     assert.strictEqual(await checkHead(darwinDLUrl), 302);
   });
@@ -58,7 +69,7 @@ describe('getDownloadURL()', () => {
     const linuxDLUrl = getDownloadURL('v0.21.13');
     assert.strictEqual(
       linuxDLUrl,
-      'https://github.com/gruntwork-io/terragrunt/releases/download/v0.21.13/terragrunt_linux_amd64'
+      `https://github.com/${process.env.GITHUB_REPOSITORY}/download/v0.21.13/terragrunt_linux_amd64`
     );
     assert.strictEqual(await checkHead(linuxDLUrl), 302);
   });
