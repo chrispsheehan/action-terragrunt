@@ -1,5 +1,53 @@
 # Changelog
 
+## [4.0.0](https://github.com/chrispsheehan/action-terragrunt/compare/v3.0.2...v4.0.0) (2024-12-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* change input/output vars underscores to dashes
+* use an optional version file to specify Terragrunt version (one of `terragrunt-version` or `terragrunt-version-file` required)
+
+### Features
+
+* add ability to get latest Terragrunt version ([#11](https://github.com/chrispsheehan/action-terragrunt/issues/11)) ([989a3e6](https://github.com/chrispsheehan/action-terragrunt/commit/989a3e649c2b234217eb6576af09a39916d94fbf))
+* add github api token input ([318b30a](https://github.com/chrispsheehan/action-terragrunt/commit/318b30a44f5bbc0d6a26e1b24943b8e82993da2f))
+* use an optional version file to specify Terragrunt version (one of `terragrunt-version` or `terragrunt-version-file` required) ([ea717b1](https://github.com/chrispsheehan/action-terragrunt/commit/ea717b1be44da5d5d4f6b9bc07688c1945d766d7))
+* use release-please instead of manual release process ([#347](https://github.com/chrispsheehan/action-terragrunt/issues/347)) ([46abb67](https://github.com/chrispsheehan/action-terragrunt/commit/46abb67fe1471e7458d19b2920ee0237892aaafc))
+
+
+### Bug Fixes
+
+* Add build assets ([#364](https://github.com/chrispsheehan/action-terragrunt/issues/364)) ([fbf57bc](https://github.com/chrispsheehan/action-terragrunt/commit/fbf57bc433aed5187d2e745446f2419812152f8c))
+* add release assets ([3a76193](https://github.com/chrispsheehan/action-terragrunt/commit/3a76193b51ee86b2d323f3e8af9a1a778bd805e2))
+* add release assets ([393ac34](https://github.com/chrispsheehan/action-terragrunt/commit/393ac341d39571e7dc22a18f04d80005b47cd2d5))
+* add release assets ([c53f921](https://github.com/chrispsheehan/action-terragrunt/commit/c53f921686ba808ddcb498879db5c842ee337f04))
+* add release assets ([cad37c7](https://github.com/chrispsheehan/action-terragrunt/commit/cad37c7dc4ca97e8647320457fcbea74f32042ba))
+* **build:** add release assets PR creation ([#365](https://github.com/chrispsheehan/action-terragrunt/issues/365)) ([24242c3](https://github.com/chrispsheehan/action-terragrunt/commit/24242c3c1939ffeede02edc8f798c4f5158df72a))
+* conditional test switch ([357a17c](https://github.com/chrispsheehan/action-terragrunt/commit/357a17c5a937b021952274365f6d682b828f127a))
+* **deps:** update dependency @types/node to v20.11.20 ([#363](https://github.com/chrispsheehan/action-terragrunt/issues/363)) ([71fb2ea](https://github.com/chrispsheehan/action-terragrunt/commit/71fb2eafa29729c9e3c006cb83536e64d80d26c2))
+* **deps:** update dependency @types/node to v20.11.30 ([#370](https://github.com/chrispsheehan/action-terragrunt/issues/370)) ([69681ba](https://github.com/chrispsheehan/action-terragrunt/commit/69681bae7394f0a57e0d005a7de18d01b62026e3))
+* **deps:** update dependency eslint to v8.57.0 ([#367](https://github.com/chrispsheehan/action-terragrunt/issues/367)) ([8d71cca](https://github.com/chrispsheehan/action-terragrunt/commit/8d71ccaf73e6c82099b14ddc68495e7c0dcab76e))
+* **deps:** update dependency got to v14.2.1 ([#372](https://github.com/chrispsheehan/action-terragrunt/issues/372)) ([bef8207](https://github.com/chrispsheehan/action-terragrunt/commit/bef8207357414270f0539f817a767eb01d25350f))
+* **deps:** update dependency node to v20.11.1 ([#356](https://github.com/chrispsheehan/action-terragrunt/issues/356)) ([870bacd](https://github.com/chrispsheehan/action-terragrunt/commit/870bacd3fd0dffc17f5f3936549b0ce77f307f96))
+* **deps:** update dependency typescript to v5.4.2 ([#371](https://github.com/chrispsheehan/action-terragrunt/issues/371)) ([61d3303](https://github.com/chrispsheehan/action-terragrunt/commit/61d33036a2a06c4a0404442a105d8eddd536e322))
+* **deps:** update dependency typescript to v5.4.3 ([#374](https://github.com/chrispsheehan/action-terragrunt/issues/374)) ([74740e6](https://github.com/chrispsheehan/action-terragrunt/commit/74740e6fbc585ea4ec7f3e73b5004d7035c4eae3))
+* **deps:** update typescript-eslint monorepo to v7.0.2 ([#361](https://github.com/chrispsheehan/action-terragrunt/issues/361)) ([1dc625a](https://github.com/chrispsheehan/action-terragrunt/commit/1dc625a2683c48a6e34d6f30f9dd6275cb650823))
+* **deps:** update typescript-eslint monorepo to v7.3.1 ([#369](https://github.com/chrispsheehan/action-terragrunt/issues/369)) ([db9d7dc](https://github.com/chrispsheehan/action-terragrunt/commit/db9d7dcbc845e628589cef94befb381928ab1cb4))
+* error.code -&gt; error.status ([4676390](https://github.com/chrispsheehan/action-terragrunt/commit/4676390fbd5a152247a972bd9d10fc9102d624e9))
+* fix formatting ([#348](https://github.com/chrispsheehan/action-terragrunt/issues/348)) ([ffcb03c](https://github.com/chrispsheehan/action-terragrunt/commit/ffcb03c8cf39ea7489d53fc80e67689c318bfbed))
+* fmt ([4312755](https://github.com/chrispsheehan/action-terragrunt/commit/4312755cb4b936b2a57976464d3c99aa8c997b3f))
+* **lint:** resolve linting issues across the codebase ([22304b0](https://github.com/chrispsheehan/action-terragrunt/commit/22304b0ef1e8a1af51e0b6403dd134cc0e2f2c99))
+* **release:** fix release-please configuration ([#354](https://github.com/chrispsheehan/action-terragrunt/issues/354)) ([d568e25](https://github.com/chrispsheehan/action-terragrunt/commit/d568e2550c289e3cfa25247ebe2aef76e07c0e70))
+* **release:** fix release-please configuration and CHANGELOG.md formatting ([#352](https://github.com/chrispsheehan/action-terragrunt/issues/352)) ([4d12d72](https://github.com/chrispsheehan/action-terragrunt/commit/4d12d72ced25a11ac99a6acf709cfad540d01448))
+* **tests:** use proper glob pattern to run tests on all branches ([22304b0](https://github.com/chrispsheehan/action-terragrunt/commit/22304b0ef1e8a1af51e0b6403dd134cc0e2f2c99))
+* use tag instead of name for latestRelease ([1acad56](https://github.com/chrispsheehan/action-terragrunt/commit/1acad564aa48ef43b0e77521a705975b4f90434d))
+
+
+### Code Refactoring
+
+* change input/output vars underscores to dashes ([ea717b1](https://github.com/chrispsheehan/action-terragrunt/commit/ea717b1be44da5d5d4f6b9bc07688c1945d766d7))
+
 ## [3.0.2](https://github.com/autero1/action-terragrunt/compare/v3.0.1...v3.0.2) (2024-02-23)
 
 
