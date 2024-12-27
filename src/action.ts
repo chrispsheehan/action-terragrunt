@@ -9,8 +9,8 @@ import {getInputs, getOutputs} from './get-inputs-and-outputs';
 
 const executableName = 'terragrunt';
 const fullExecutableFormat = 'terragrunt_%s_%s';
-const repoOrigin = 'https://github.com/gruntwork-io/terragrunt';
-const downloadUrlFormat = `${repoOrigin}/releases/download/%s/${fullExecutableFormat}`;
+export const parentRepoOrigin = 'https://github.com/gruntwork-io/terragrunt';
+const downloadUrlFormat = `${parentRepoOrigin}/releases/download/%s/${fullExecutableFormat}`;
 
 export function getExecutableExtension(): string {
   if (os.type().match(/^Win/)) {
