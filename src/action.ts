@@ -37,12 +37,6 @@ export function getArchName(): string {
 export function getDownloadURL(version: string): string {
   const arch = getArchName();
 
-  const repoUrl = process.env.GITHUB_REPOSITORY
-  ? `https://github.com/${process.env.GITHUB_REPOSITORY}`
-  : 'https://github.com/gruntwork-io/terragrunt';
-
-  const downloadUrlFormat = `${repoUrl}/releases/download/%s/${fullExecutableFormat}`;
-
   switch (os.type()) {
     case 'Windows_NT':
       return `${util.format(downloadUrlFormat, version, 'windows', arch)}.exe`;

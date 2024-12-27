@@ -28,7 +28,7 @@ describe('getDownloadURL()', () => {
     const winDLUrl = getDownloadURL('v0.21.13');
     assert.strictEqual(
       winDLUrl,
-      'https://github.com/gruntwork-io/terragrunt/releases/download/v0.21.13/terragrunt_windows_amd64.exe'
+      `https://github.com/${process.env.GITHUB_REPOSITORY}/releases/download/v0.21.13/terragrunt_windows_amd64.exe`
     );
     assert.strictEqual(await checkHead(winDLUrl), 302);
   });
@@ -43,7 +43,7 @@ describe('getDownloadURL()', () => {
     const darwinDLUrl = getDownloadURL('v0.21.13');
     assert.strictEqual(
       darwinDLUrl,
-      'https://github.com/gruntwork-io/terragrunt/releases/download/v0.21.13/terragrunt_darwin_amd64'
+      `https://github.com/${process.env.GITHUB_REPOSITORY}/releases/download/v0.21.13/terragrunt_darwin_amd64`
     );
     assert.strictEqual(await checkHead(darwinDLUrl), 302);
   });
@@ -58,7 +58,7 @@ describe('getDownloadURL()', () => {
     const linuxDLUrl = getDownloadURL('v0.21.13');
     assert.strictEqual(
       linuxDLUrl,
-      'https://github.com/gruntwork-io/terragrunt/releases/download/v0.21.13/terragrunt_linux_amd64'
+      `https://github.com/${process.env.GITHUB_REPOSITORY}/download/v0.21.13/terragrunt_linux_amd64`
     );
     assert.strictEqual(await checkHead(linuxDLUrl), 302);
   });
