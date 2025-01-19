@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
 import * as toolCache from '@actions/tool-cache';
+import * as exec from '@actions/exec';
+import * as cache from '@actions/cache';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -150,10 +152,42 @@ export async function run(): Promise<void> {
 
   const cachedPath = await downloadTerragrunt(terragruntVersion);
 
-  // Add the cached tool to path
   core.addPath(path.dirname(cachedPath));
   core.info(
     `[INFO] Terragrunt version: '${terragruntVersion}' has been cached at ${cachedPath}`
   );
   core.setOutput(getOutputs().TerragruntPath, cachedPath);
+
+  const terraformCacheKey = `terraform-init-cache-${process.env.GITHUB_SHA}`;
+  const terraformCachePath = '.terraform';
+
+  try {
+    const restoredCacheKey = await cache.restoreCache(
+      [terraformCachePath],
+      terraformCacheKey
+    );
+    if (restoredCacheKey) {
+      core.info(`[INFO] Restored Terraform init cache: ${restoredCacheKey}`);
+    } else {
+      core.info('[INFO] No cache found for Terraform init.');
+    }
+  } catch (error) {
+    core.warning(`[WARNING] Failed to restore cache: ${error}`);
+  }
+
+  try {
+    core.info('[INFO] Running `terraform init`...');
+    await exec.exec('terraform init');
+    core.info('[INFO] `terraform init` completed successfully.');
+  } catch (error) {
+    core.setFailed(`[ERROR] Terraform init failed: ${error}`);
+    throw error;
+  }
+
+  try {
+    await cache.saveCache([terraformCachePath], terraformCacheKey);
+    core.info(`[INFO] Saved Terraform init cache with key: ${terraformCacheKey}`);
+  } catch (error) {
+    core.warning(`[WARNING] Failed to save cache: ${error}`);
+  }
 }
